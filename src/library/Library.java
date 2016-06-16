@@ -8,7 +8,9 @@ package library;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -52,5 +54,27 @@ public class Library {
         }
 
     }
+    
+    public String consultaDatos(String Tabla,int numcolumnas, String datosVisualizar){
+        
+        String visualizar="";
+        try {
+            Statement prepstat= conexion.createStatement();
+            ResultSet rs= prepstat.executeQuery("select "+datosVisualizar+" from "+Tabla);
+            String [] datos= new String[numcolumnas-1];
+            while(rs.next()){
+          
+                for (int i = 0; i < datos.length; i++) {
+                    datos[i]=rs.getString(i+1);
+                    visualizar= visualizar +" "+datos[i];
+                
+                }
+            }
+                   
+        } catch (SQLException ex) {
+            System.out.println("Error al viosualizar");
+        }
+        return visualizar;
+}
 
 }
