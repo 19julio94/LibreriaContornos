@@ -21,6 +21,13 @@ public class Library {
 
     Connection conexion = null;
 
+    /**
+     *Metodo para conectarse a la base de datos
+     * @param URL
+     * @param usuario
+     * @param contraseña
+     * @return
+     */
     public Connection Conectar(String URL, String usuario, String contraseña) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -32,6 +39,11 @@ public class Library {
         return conexion;
     }
 
+    /**
+     *Metodo para insertar datos en la base de datos
+     * @param Tabla
+     * @param parametros
+     */
     public void Insertar(String Tabla, String parametros) {
 
         try {
@@ -43,6 +55,11 @@ public class Library {
         }
     }
 
+    /**
+     *Metodo para borrar datos en la base de datos
+     * @param Tabla
+     * @param ID
+     */
     public void BorrarDatos(String Tabla, int ID) {
 
         try {
@@ -55,6 +72,13 @@ public class Library {
 
     }
     
+    /**
+     *Metodo para consultar en la base de datos
+     * @param Tabla
+     * @param numcolumnas
+     * @param datosVisualizar
+     * @return
+     */
     public String consultaDatos(String Tabla,int numcolumnas, String datosVisualizar){
         
         String visualizar="";
