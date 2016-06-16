@@ -7,6 +7,7 @@ package library;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -27,6 +28,17 @@ public class Library {
             JOptionPane.showMessageDialog(null, "No se ha establecido conexion");
         }
         return conexion;
+    }
+    
+    public void Insertar(String Tabla, String parametros) {
+
+        try {
+            PreparedStatement st = conexion.prepareStatement("insert into " + Tabla + " VALUES(" + parametros + ")");
+            st.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Error en la insercion");
+        }
     }
 
 }
