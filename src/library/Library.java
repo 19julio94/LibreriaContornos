@@ -29,7 +29,7 @@ public class Library {
         }
         return conexion;
     }
-    
+
     public void Insertar(String Tabla, String parametros) {
 
         try {
@@ -39,6 +39,18 @@ public class Library {
         } catch (SQLException ex) {
             System.out.println("Error en la insercion");
         }
+    }
+
+    public void BorrarDatos(String Tabla, int ID) {
+
+        try {
+            PreparedStatement st = conexion.prepareStatement("delete from " + Tabla + " where id=" + ID);
+            st.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("Error en al borrar");
+        }
+
     }
 
 }
